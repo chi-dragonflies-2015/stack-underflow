@@ -22,6 +22,15 @@ end
     commenter = User.find(user_id)
     Question.last.comments.create!(body: Faker::Company.catch_phrase, user: commenter)
   end
+
+  vote_count = 1 + rand(10)
+  temp_id = 1
+  vote_count.times do
+    voter = User.find(temp_id)
+    Question.last.votes.create!(user: voter)
+    temp_id +=1
+  end
+
 end
 
 20.times do
@@ -41,6 +50,13 @@ end
     Answer.last.comments.create!(body: Faker::Company.catch_phrase, user: commenter)
   end
 
+  vote_count = 1 + rand(10)
+  temp_id = 1
+  vote_count.times do
+    voter = User.find(temp_id)
+    Answer.last.votes.create!(user: voter)
+    temp_id +=1
+  end
 
 end
 
