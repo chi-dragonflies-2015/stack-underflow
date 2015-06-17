@@ -26,6 +26,14 @@ nav {
   text-align: left;
 }
 
+nav a {
+  color: white;
+}
+
+nav a:visited {
+  color: white;
+}
+
 .white {
   color: white;
 }
@@ -136,7 +144,7 @@ a:hover {
 }
 
 a:visited {
-  color: #ccc;
+  color: DarkBlue;
 }
 
 .fineprint {

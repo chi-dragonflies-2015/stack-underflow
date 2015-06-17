@@ -1,6 +1,8 @@
 get '/' do
+  @questions = Question.limit(10)
   erb :index
 end
+
 
 get '/login' do
   erb :login
@@ -16,11 +18,3 @@ post '/login' do
     erb :login
   end
 end
-
-
-
-
-
-
-
-

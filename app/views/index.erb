@@ -1,30 +1,28 @@
-index.erb
-    <div class="sidebar">
-      <p>And here is the sidebar</p>
-    </div>
 
-    <div class="main">
-      <div class="tabs">
-        <span class="fl-l">Top Questions</span>
-        <ul>
-          <li class="active">newest</li>
-          <li>votes</li>
-          <li>comments</li>
-          <li>unanswered</li>
-        </ul>
+
+<div class="main">
+  <div class="tabs">
+    <span class="fl-l">Top Questions</span>
+    <ul>
+      <li class="active">newest</li>
+      <li>votes</li>
+      <li>comments</li>
+      <li>unanswered</li>
+    </ul>
+  </div>
+
+  <% @questions.each do |question| %>
+    <div class="listing">
+      <div class="statbox">
+        <p><%= question.votes.count %></p>
+        <p class="smallest">votes</p>
       </div>
-
-
-      <div class="listing">
-        <div class="statbox">
-          <p>0</p>
-          <p class="smallest">votes</p>
-        </div>
-        <div class="statbox highlight">
-          <p>2</p>
-          <p class="smallest">answers</p>
-        </div>
-        <p><a href="question.html">Who wrote the book of love?</a></p>
-        <p class="fineprint">asked 2 min ago by <a href="users/johnsmith">John Smith</a></p>
+      <div class="statbox highlight">
+        <p><%= question.answers.count %></p>
+        <p class="smallest">answers</p>
       </div>
+      <p><a href="/questions/<%= question.id %>"><%= question.title %></a></p>
+      <p class="fineprint">asked on <%= question.created_at.strftime("%b %d, %Y") %> by <a href="/users/<%= question.user.id %>"><%= question.user.user_name %></a></p>
     </div>
+  <% end %>
+</div>
