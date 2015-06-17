@@ -1,0 +1,12 @@
+<% if @incorrect_login == true %>
+  <p>INCORRECT LOGIN INFORMATION!</p>
+<% end %>
+
+<div class="login-form debug">
+  <form method="POST" action="/login">
+    <p><input type="text" name="login[username]" placeholder="username"></p>
+    <p><input type="password" name="login[password]" placeholder="password"></p>
+    <!--input type="submit"-->
+    <a href="#" class="debug submit">SUBMIT</a>
+  </form>
+</div>
