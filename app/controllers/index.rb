@@ -9,7 +9,7 @@ get '/login' do
 end
 
 post '/login' do
-  @user = current_user.authenticate(current_user[:user_name], current_user[:password])
+  @user = User.authenticate(params[:login][:user_name], params[:login][:password])
   if @user
     session[:user_id] = @user.id
     redirect '/'
