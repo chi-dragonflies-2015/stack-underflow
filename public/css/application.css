@@ -153,3 +153,32 @@ a:visited {
   color: #ccc;
   vertical-align: bottom;
 }
+
+
+/***********************
+ * LOGIN STYLES
+ ***********************/
+ .debug {
+  border: 1px solid red;
+ }
+
+.login-styles {
+  width: 50%;
+}
+
+form {
+  width: 50%;
+}
+
+.submit {
+  background-color: #888;
+  color: white;
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  text-decoration: none;
+  width: 100px;
+  text-align: center;
+}
+
+
