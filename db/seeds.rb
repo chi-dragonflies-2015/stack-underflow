@@ -9,3 +9,14 @@ require 'Faker'
 end
 
 
+
+10.times do
+  id = 1 + rand(10)
+  user = User.find(id)
+  Question.create!(
+    title: Faker::Company.bs,
+    body: Faker::Lorem.paragraph,
+    user: user
+    )
+
+end
