@@ -10,9 +10,22 @@
   <title></title>
 </head>
 <body>
-  <div class="top-menu">
-    <p>Login/logout, userid info will go here</p>
+  <div class="container">
+    <header>
+      <p class="white">Login/logout, userid info will go here</p>
+    </header>
+
+    <nav>
+      <img src="logo.png" border=0>
+      <ul class="nav-menu">
+        <li>Questions</li>
+        <li>Users</li>
+        <li>Ask Question</li>
+      </ul>
+    </nav>
+
+    <%= yield %>
+
   </div>
-  <%= yield %>
 </body>
 </html>
