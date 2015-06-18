@@ -30,9 +30,8 @@ post '/login' do
   end
 end
 
-get '/questions/:id/answers' do
-  p "<" * 30 + "PARAMS: " + params[:id] + ">" * 30
-  @question = Question.find(params[:id])
+get '/questions/:id/answers' do  |id|
+  @question = Question.find(id)
   @answers = @question.answers
   erb :'/questions/show'
 end
@@ -48,8 +47,14 @@ put '/questions/:id' do #secure
   redirect "/questions/#{params[:id]}" if !session[:user_id]
   question = Question.find(params[:id])
   question.update(params[:question])
-  redirect "/questions/#{params[:id]}"
+  redirect "/questions/#{params[:id]}/answers"
 
+end
+
+delete '/questions/:id' do
+  question = Question.find(params[:id])
+  question.destroy
+  redirect "/questions"
 end
 
 get '/questions/new' do #secure
@@ -69,15 +74,15 @@ post '/questions' do #secure
 end
 
 get '/questions/:id/answers/new' do
-  redirect '/questions/:id/answers' if !session[:user_id]
+  redirect '/questions/#{params[:id]}/answers' if !session[:user_id]
   @question = Question.find(params[:id])
   erb :answer_form
 end
 
-post '/questions/:id/answers' do
+post '/questions/:id/answers' do |id|
   answer = Answer.new(params[:answer])
   if answer.save
-    redirect '/questions/:id/answers'
+    redirect "/questions/#{id}/answers"
   else
     @not_saved = true
     erb :answer_form
