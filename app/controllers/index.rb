@@ -74,7 +74,36 @@ post '/questions/:id/answers' do
   end
 end
 
+get '/questions/:question_id/answers/:answer_id/comments/new' do
+  @question = Question.find(params[:id])
+  @answer = Answer.find(params[:id])
+  erb :answer_comment_form
+end
 
+post '/questions/:question_id/answers/:answer_id/comments' do
+  comment = Comment.new(params[:comment])
+  if comment.save
+    redirect "/questions/#{params[:question_id]}/answers"
+  else
+    @not_saved = true
+    erb :answer_comment_form
+  end
+end
 
+get '/questions/:id/comments/new' do
+  @question = Question.find(params[:id])
+  erb :question_comment_form
+end
+
+post 'questions/:id/comments' do
+  comment = Comment.new(params[:comment])
+  if comment.save
+    redirect "/questions/#{params[:id]}/answers"
+  else
+    @not_saved = true
+    erb :answer_comment_form
+  end
+
+end
 
 
