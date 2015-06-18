@@ -1,7 +1,7 @@
 <h1> <%= @user.user_name %> </h1>
 <p> email: <%= @user.email %> </p>
 <% if @user.id == session[:user_id] %>
-  <form name ="edit" action="/users/<%=@user.id%>" method="post">
+  <form name ="edit" action="/users/<%=@user.id%>/edit" method="post">
     <input type="hidden" name="_method" value="put">
     <input type="submit" value="edit profile">
   </form>

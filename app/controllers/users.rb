@@ -25,3 +25,21 @@ get '/users/:id' do |id|
   erb :"/users/show"
 end
 
+get '/users/:id/edit' do |id|
+  @user = User.find_by(id: id)
+  erb :"/users/edit"
+end
+
+put '/users/:id' do |id|
+  @user = User.find_by(id: id)
+  @user.update_attributes(params[:user])
+  redirect "/users/#{@user.id}"
+end
+
+delete '/users/:id' do |id|
+  user = User.find_by(id: id)
+  redirect back unless current_user == current_user
+  user.destroy
+  redirect '/'
+end
+
