@@ -19,7 +19,7 @@
         <p><%= question.answers.count %></p>
         <p class="smallest">answers</p>
       </div>
-      <p><a href="/questions/<%= question.id %>"><%= question.title %></a></p>
+      <p><a href="/questions/<%= question.id %>/answers"><%= question.title %></a></p>
       <p class="fineprint">asked on <%= question.created_at.strftime("%b %d, %Y") %> by <a href="/users/<%= question.user.id %>"><%= question.user.user_name %></a></p>
     </div>
   <% end %>
