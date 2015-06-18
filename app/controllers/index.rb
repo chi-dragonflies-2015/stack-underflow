@@ -1,10 +1,7 @@
 get '/' do
-  @user = User.find(session[:user_id])
   @questions = Question.all #.limit(10)
-  @user = User.find_by(session[:user_id])
   erb :index
 end
-
 
 get '/login' do #>>>>
   erb :login
