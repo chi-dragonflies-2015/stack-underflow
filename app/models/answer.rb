@@ -11,3 +11,4 @@ class Answer < ActiveRecord::Base
     !self.voters.include?(user) && self.user != user
   end
 end
+#filler

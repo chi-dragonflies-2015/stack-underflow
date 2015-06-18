@@ -3,3 +3,5 @@ class AddVoteValueColumn < ActiveRecord::Migration
     add_column :votes, :value, :integer
   end
 end
+#filler
+\

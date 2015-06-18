@@ -6,3 +6,4 @@ class Vote < ActiveRecord::Base
 
   validates :value, :inclusion => { :in => [1, -1]}
 end
+#filler
