@@ -1,60 +1,26 @@
-<div class="questiontitle"><%= @question.title %></div>
+<div class="generictitle">All Questions</div>
 
-<div class="votebox">
-  <form name="upvote" action="/questions/<%=@question.id%>/vote" method="post">
-    <input type="hidden" name="value" value="1">
-    <input type="image" value="upvote" src="/upvote.jpg">
-    </form>
-  <%= @question.reputation %>
-  <form name="downvote" action="/questions/<%=@question.id%>/vote" method="post">
-    <input type="hidden" name="value" value="-1">
-    <input type="image" value="downvote" src="/downvote.jpg">
-    </form>
-</div>
 
-<div class="questionbody">
-  <p><%= @question.body %></p>
-
-  <p class="posterbox">
-    Asked on <%= @question.created_at.strftime("%b %d, %Y at %l:%M %p") %> by <a href="/users/<%= @question.user.id %>"><%= @question.user.user_name %></a>
-  </p>
-
-  <% @question.comments.each do |comment| %>
-    <div class="commentbody">
-      <p><%= comment.body %> — <a href="/users/<%= comment.user.id %>"><%= comment.user.user_name %></a> <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
+<% @questions.each do |question| %>
+  <div class="listing">
+    <div class="statbox">
+      <p><%= question.votes.count %></p>
+      <p class="smallest">votes</p>
     </div>
-  <% end %>
 
-  <div class="commenttitle">Your Comment</div>
-  <%= erb :_comment_form %>
-</div>
+    <div class="statbox highlight">
+      <p><%= question.answers.count %></p>
+      <p class="smallest">answers</p>
+    </div>
 
-<div class="answertitle">Answers</div>
+    <p><a href="/questions/<%= question.id %>/answers"><%= question.title %></a></p>
 
-<% @answers.each do |answer| %>
-  <div class="votebox">
-    <%= erb :_upvote %>
-    <%= answer.reputation %>
-    <%= erb :_downvote %>
-  </div>
-
-  <div class="answerbody">
-    <p><%= answer.body %></p>
-
-    <p class="posterbox">
-      Answered on <%= answer.created_at.strftime("%b %d, %Y at %l:%M %p") %> by <a href="/users/<%= answer.user.id %>"><%= answer.user.user_name %></a>
+    <p class="fineprint">asked on <%= question.created_at.strftime("%b %d, %Y") %> by
+      <% unless question.user.nil? %>
+        <a href="/users/<%= question.user.id %>"><%= question.user.user_name %></a>
+      <% else %>
+        deleted_user
+      <% end %>
     </p>
-
-    <% answer.comments.each do |comment| %>
-      <div class="commentbody">
-        <p><%= comment.body %> — <a href="/users/<%= comment.user.id %>"><%= comment.user.user_name %></a> <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
-      </div>
-    <% end %>
-
-    <div class="commenttitle">Your Comment</div>
-    <%= erb :_comment_form %>
   </div>
 <% end %>
-
-<div class="answertitle">Your Answer</div>
-<%= erb :_answer_form %>
