@@ -2,7 +2,7 @@
   <p>DID NOT SAVE! Try again.</p>
 <% end %>
 
-<form method="POST" action="/answers">
+<form method="POST" action="/questions/<%= @question.id %>/answers">
   <h3>Submit a question:</h3>
   <p><textarea name="answer[body]" placeholder="question"></textarea></p>
   <input type="submit">
