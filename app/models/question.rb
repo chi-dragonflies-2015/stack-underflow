@@ -4,11 +4,16 @@ class Question < ActiveRecord::Base
   belongs_to :best_answer, class_name: "Answer"
   has_many  :answers
   belongs_to  :user
+  has_many :voters, through: :votes, source: :user
 
   validates :title, { presence: true }
   validates :body, { presence: true }
 
   def reputation
     votes.pluck(:value).reduce(:+) || 0
+  end
+
+  def eligible_voter?(user)
+    !self.voters.include?(user) && user != user
   end
 end
