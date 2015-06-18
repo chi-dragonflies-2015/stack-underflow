@@ -1,0 +1,9 @@
+<% if @not_commented %>
+  <p>DID NOT SAVE! Try again.</p>
+<% end %>
+
+<form method="POST" action="/questions/<%= @question.id %>/comments">
+  <h3>Submit a comment:</h3>
+  <p><textarea name="comment[body]" placeholder="comment"></textarea></p>
+  <input type="submit">
+</form>

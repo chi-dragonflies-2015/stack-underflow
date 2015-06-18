@@ -1,0 +1,44 @@
+<h1> <%= @user.user_name %> </h1>
+<p> email: <%= @user.email %> </p>
+<% if @user.id == session[:user_id] %>
+  <form name ="edit" action="/users/<%=@user.id%>/edit" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="edit profile">
+  </form>
+  <br>
+  <br>
+  <form name ="delete" action="/users/<%=@user.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete profile">
+  </form>
+<% end %>
+<h3> Questions </h3>
+<ul>
+  <% @user.questions.each do |question| %>
+  <li>
+    <a href="/questions/<%=question.id%>/answers">
+      <%= question.title %>
+    </a>
+  </li>
+  <% end %>
+</ul>
+<br>
+<br>
+<h3> Answers </h3>
+<ul>
+  <% @user.answers.each do |answer| %>
+  <li>
+    <a href="/questions/<%=answer.question.id%>/answers">
+      <%= answer.question.title %>
+    </a>
+    <br>
+    <% if !answer.title.nil? %>
+      <%= answer.title %>
+      <br>
+    <% end %>
+    <%= answer.body %>
+  </li>
+  <% end %>
+</ul>
+<br>
+<br>

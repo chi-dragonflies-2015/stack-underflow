@@ -9,7 +9,7 @@ get '/login' do
 end
 
 
-get '/login' do
+get '/login' do #>>>>
   erb :login
 end
 
@@ -38,8 +38,13 @@ post '/questions' do
   end
 end
 
+# Remove after reviewing look and feel
 get '/questions/test' do
   @question = Question.first
   @answers = @question.answers
   erb :"questions/index"
+end
+
+get '/questions/:id' do
+
 end
