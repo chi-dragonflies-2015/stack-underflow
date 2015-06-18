@@ -8,7 +8,7 @@ get '/login' do
 end
 
 
-get '/login' do
+get '/login' do #>>>>
   erb :login
 end
 
@@ -36,3 +36,5 @@ post '/questions' do
     redirect '/question_form'
   end
 end
+
+get '/questions/:id' do
