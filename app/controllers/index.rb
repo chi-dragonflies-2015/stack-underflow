@@ -23,11 +23,11 @@ post '/login' do
   end
 end
 
-get '/question_form' do
+get '/questions/new' do
   erb :"question_form"
 end
 
-post '/question_form' do
+post '/questions' do
   new_question = Question.new(params[:question])
   new_question.user = User.find(session[:user_id])
   if new_question.save
