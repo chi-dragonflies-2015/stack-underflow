@@ -20,20 +20,20 @@ post '/login' do
   end
 end
 
-get '/questions/:id' do
+get '/questions/:id/answers' do
   @question = Question.find(params[:id])
   erb :'/questions/index'
 
 end
 
-get 'questions/:id/edit' do #secure
+get '/questions/:id/edit' do #secure
   redirect "/questions/#{params[:id]}" if !session[:user_id] 
   @question = Question.find(params[:id])
   erb :question_edit
 
 end
 
-put 'questions/:id' do #secure
+put '/questions/:id' do #secure
   redirect "/questions/#{params[:id]}" if !session[:user_id] 
   question = Question.find(params[:id])
   question.update(params[:question])
