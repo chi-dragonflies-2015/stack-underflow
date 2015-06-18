@@ -32,6 +32,15 @@ end
 
 put '/users/:id' do |id|
   @user = User.find_by(id: id)
+  redirect back unless current_user == current_user
+  if !params[:password].nil?
+    if params[:password] != params[:password_2]
+      #throw an error with ajax or something if this gets passed
+      redirect to "/users/#{@user.id}"
+    else
+      @user.password = params[:password]
+    end
+  end
   @user.update_attributes(params[:user])
   redirect "/users/#{@user.id}"
 end
