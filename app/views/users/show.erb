@@ -1,0 +1,33 @@
+<h1> <%= @user.user_name %> </h1>
+<p> email: <%= @user.email %> </p>
+
+<h3> Questions </h3>
+<ul>
+  <% @user.questions.each do |question| %>
+  <li>
+    <a href="/questions/<%=question.id%>/answers">
+      <%= question.title %>
+    </a>
+  </li>
+  <% end %>
+</ul>
+<br>
+<br>
+<h3> Answers </h3>
+<ul>
+  <% @user.answers.each do |answer| %>
+  <li>
+    <a href="/questions/<%=answer.question.id%>/answers">
+      <%= answer.question.title %>
+    </a>
+    <br>
+    <% if !answer.title.nil? %>
+      <%= answer.title %>
+      <br>
+    <% end %>
+    <%= answer.body %>
+  </li>
+  <% end %>
+</ul>
+<br>
+<br>

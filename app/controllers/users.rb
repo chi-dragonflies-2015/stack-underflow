@@ -19,3 +19,9 @@ end
 get '/users/new' do
   erb :"/users/new"
 end
+
+get '/users/:id' do |id|
+  @user = User.find_by(id: id)
+  erb :"/users/show"
+end
+
