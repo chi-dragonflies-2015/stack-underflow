@@ -8,9 +8,19 @@
 
 <div class="questionbody">
   <p><%= @question.body %></p>
+
   <p class="posterbox">
     Asked on <%= @question.created_at.strftime("%b %d, %Y at %l:%M %p") %> by <a href="/users/<%= @question.user.id %>"><%= @question.user.user_name %></a>
   </p>
+
+  <% @question.comments.each do |comment| %>
+    <div class="commentbody">
+      <p><%= comment.body %> — <a href="/users/<%= comment.user.id %>"><%= comment.user.user_name %></a> <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
+    </div>
+  <% end %>
+
+  <div class="commenttitle">Your Comment</div>
+  <%= erb :_comment_form %>
 </div>
 
 <div class="answertitle">Answers</div>
@@ -24,12 +34,21 @@
 
   <div class="answerbody">
     <p><%= answer.body %></p>
+
     <p class="posterbox">
       Answered on <%= answer.created_at.strftime("%b %d, %Y at %l:%M %p") %> by <a href="/users/<%= answer.user.id %>"><%= answer.user.user_name %></a>
     </p>
+
+    <% answer.comments.each do |comment| %>
+      <div class="commentbody">
+        <p><%= comment.body %> — <a href="/users/<%= comment.user.id %>"><%= comment.user.user_name %></a> <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
+      </div>
+    <% end %>
+
+    <div class="commenttitle">Your Comment</div>
+    <%= erb :_comment_form %>
   </div>
 <% end %>
 
 <div class="answertitle">Your Answer</div>
-
 <%= erb :_answer_form %>
