@@ -1,6 +1,16 @@
 <h1> <%= @user.user_name %> </h1>
 <p> email: <%= @user.email %> </p>
-
+<% if @user.id == session[:user_id] %>
+  <form name ="edit" action="/users/<%=@user.id%>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="edit profile">
+  </form>
+  <br>
+  <br>
+  <form name ="delete" action="/users/<%=@user.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete profile">
+<% end %>
 <h3> Questions </h3>
 <ul>
   <% @user.questions.each do |question| %>
