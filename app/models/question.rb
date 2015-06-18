@@ -14,6 +14,6 @@ class Question < ActiveRecord::Base
   end
 
   def eligible_voter?(user)
-    !self.voters.include?(user) && user != user
+    !self.voters.include?(user) && self.user != user
   end
 end
