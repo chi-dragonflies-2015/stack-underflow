@@ -30,7 +30,7 @@ end
 get '/questions/:id/edit' do #secure
   redirect "/questions/#{params[:id]}" if !session[:user_id] 
   @question = Question.find(params[:id])
-  erb :question_edit
+  erb :question_edit_form
 
 end
 
@@ -105,17 +105,34 @@ post '/questions/:id/comments' do
   end
 end
 
-get '/questions/:id/comments/edit' do
-  @question = Question.find(params[:id])
+get '/questions/:question_id/comments/:comment_id/edit' do
+  @question = Question.find(params[:question_id])
+  @comment = Comment.find(params[:comment_id])
   erb :comment_edit_form
 end
 
-put '/questions/:id/comments' do
-  comment = Comment.find(params[:id])
+put '/questions/:question_id/comments/:comment_id' do
+  comment = Comment.find_by(params[:comment_id])
   comment.update(params[:comment])
-  redirect "/questions/#{params[:id]}/answers"
+  redirect "/questions/#{params[:question_id]}/answers"
 end
 
-get '/questions/:q'
+get '/questions/:question_id/answers/:answer_id/edit' do
+  @question = Question.find(params[:question_id])
+  @answer = Answer.find(params[:answer_id])
+  erb :answer_edit_form
+end
+
+put '/questions/:question_id/answers/:answer_id' do
+  answer = Answer.find(params[:answer_id])
+  answer.update(params[:answer])
+  redirect "/questions/#{params[:question_id]}/answers"
+end
+
+
+
+
+
+
 
 
