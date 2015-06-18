@@ -15,26 +15,21 @@
       <p><%= question.votes.count %></p>
       <p class="smallest">votes</p>
     </div>
-      <div class="statbox highlight">
-        <p><%= question.answers.count %></p>
-        <p class="smallest">answers</p>
-      </div>
-      <p><a href="/questions/<%= question.id %>/answers"><%= question.title %></a></p>
 
-      <p class="fineprint">asked on <%= question.created_at.strftime("%b %d, %Y") %> by
-        <% unless question.user.nil? %>
-          <a href="/users/<%= question.user.id %>"><%= question.user.user_name %></a>
-        <% else %>
-          deleted_user
-        <% end %>
-      </p>
-    </div>
     <div class="statbox highlight">
       <p><%= question.answers.count %></p>
       <p class="smallest">answers</p>
     </div>
+
     <p><a href="/questions/<%= question.id %>/answers"><%= question.title %></a></p>
-    <p class="fineprint">asked on <%= question.created_at.strftime("%b %d, %Y") %> by <a href="/users/<%= question.user.id %>"><%= question.user.user_name %></a></p>
+
+    <p class="fineprint">asked on <%= question.created_at.strftime("%b %d, %Y") %> by
+      <% unless question.user.nil? %>
+        <a href="/users/<%= question.user.id %>"><%= question.user.user_name %></a>
+      <% else %>
+        deleted_user
+      <% end %>
+    </p>
   </div>
 <% end %>
 
