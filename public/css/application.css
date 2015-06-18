@@ -183,16 +183,8 @@ a:visited {
 /***********************
  * LOGIN STYLES
  ***********************/
- .debug {
+.debug {
   border: 1px solid red;
- }
-
-.login-styles {
-  width: 50%;
-}
-
-form {
-  width: 50%;
 }
 
 .submit {

@@ -15,7 +15,7 @@
       <% if @user %>
         <p class="white">Hello, <a href="/users/@user.id"><%= @user.user_name %></a> | <a href="/logout">Log out</a></p>
       <% else %>
-        <p class="white"><a href="/login">Log in</a></p>
+        <p class="white"><a href="/login">Log in</a> | <a href="/users/new">Create an account</a></p>
       <% end %>
     </header>
 
