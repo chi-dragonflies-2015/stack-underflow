@@ -5,7 +5,7 @@ helpers do
   end
 
   def logout_user
-    sessions[:user_id] = nil
+    session[:user_id] = nil
   end
 
   def existing_user?
@@ -15,5 +15,7 @@ helpers do
       false
     end
   end
+
+
 
 end
