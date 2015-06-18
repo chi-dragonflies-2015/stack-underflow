@@ -48,7 +48,17 @@ end
 delete '/users/:id' do |id|
   user = User.find_by(id: id)
   redirect back unless current_user == current_user
+  user_questions = Question.where(user: user)
+  user_answers = Answer.where(user: user)
+  user_comments = Comment.where(user: user)
+  user_posts = user_questions + user_answers + user_comments
+
+  user_posts.each do |post|
+    post.user = nil
+  end
+
   user.destroy
+  logout_user
   redirect '/'
 end
 
