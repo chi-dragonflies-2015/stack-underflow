@@ -4,4 +4,4 @@ class AddVoteValueColumn < ActiveRecord::Migration
   end
 end
 #filler
-\
+

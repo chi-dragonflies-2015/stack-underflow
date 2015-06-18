@@ -4,13 +4,9 @@ class Question < ActiveRecord::Base
   belongs_to :best_answer, class_name: "Answer"
   has_many  :answers
   belongs_to  :user
-  has_many :voters, through: :votes, source: :user
 
   validates :title, { presence: true }
   validates :body, { presence: true }
 
-  def eligible_voter? (user)
-    !self.voters.include?(user) && self.user != user
-  end
 end
 #filler
