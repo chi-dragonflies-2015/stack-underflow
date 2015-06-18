@@ -110,6 +110,7 @@ post '/questions/:id/comments' do
   end
 end
 
+
 get '/questions/:question_id/comments/:comment_id/edit' do
   @question = Question.find(params[:question_id])
   @comment = Comment.find(params[:comment_id])
@@ -128,11 +129,34 @@ get '/questions/:question_id/answers/:answer_id/edit' do
   erb :answer_edit_form
 end
 
+# Begin Jason's testing routes
+
+get '/questions/test' do
+  puts 'HI'
+  @questions = Question.all
+  puts @questions.length
+  erb :"questions/index"
+end
+
+get '/questions/show/test' do
+  @question = Question.find(2)
+  @answers = @question.answers
+  erb :"questions/show"
+end
+
+# End Jason's testing routes
+
+get '/questions/:id' do
+end
+
+
 put '/questions/:question_id/answers/:answer_id' do
   answer = Answer.find(params[:answer_id])
   answer.update(params[:answer])
   redirect "/questions/#{params[:question_id]}/answers"
 end
+
+
 
 
 
