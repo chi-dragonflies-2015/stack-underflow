@@ -26,10 +26,10 @@ post '/login' do
 end
 
 get '/questions/:id/answers' do
-  @questions = Question.all
+  p "<" * 30 + "PARAMS: " + params[:id] + ">" * 30
   @question = Question.find(params[:id])
+  @answers = @question.answers
   erb :'/questions/show'
-
 end
 
 get '/questions/:id/edit' do #secure
