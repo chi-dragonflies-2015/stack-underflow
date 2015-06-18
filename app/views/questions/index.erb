@@ -10,12 +10,23 @@
   <p><%= @question.body %></p>
 
   <p class="posterbox">
-    Asked on <%= @question.created_at.strftime("%b %d, %Y at %l:%M %p") %> by <a href="/users/<%= @question.user.id %>"><%= @question.user.user_name %></a>
+    Asked on <%= @question.created_at.strftime("%b %d, %Y at %l:%M %p") %> by
+      <% unless @question.user.nil? %>
+        <a href="/users/<%= question.user.id %>"><%= @question.user.user_name %></a>
+      <% else %>
+        deleted_user
+      <% end %>
   </p>
 
   <% @question.comments.each do |comment| %>
     <div class="commentbody">
-      <p><%= comment.body %> — <a href="/users/<%= comment.user.id %>"><%= comment.user.user_name %></a> <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
+      <p><%= comment.body %> —
+        <% unless comment.user.nil? %>
+          <a href="/users/<%= comment.user.id %>"><%= comment.user.user_name %></a>
+        <% else %>
+          deleted_user
+        <% end %>
+        <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
     </div>
   <% end %>
 
@@ -36,12 +47,23 @@
     <p><%= answer.body %></p>
 
     <p class="posterbox">
-      Answered on <%= answer.created_at.strftime("%b %d, %Y at %l:%M %p") %> by <a href="/users/<%= answer.user.id %>"><%= answer.user.user_name %></a>
+      Answered on <%= answer.created_at.strftime("%b %d, %Y at %l:%M %p") %> by
+      <% unless answer.user.nil? %>
+        <a href="/users/<%= answer.user.id %>"><%= answer.user.user_name %></a>
+      <% else %>
+        deleted_user
+      <% end %>
     </p>
 
     <% answer.comments.each do |comment| %>
       <div class="commentbody">
-        <p><%= comment.body %> — <a href="/users/<%= comment.user.id %>"><%= comment.user.user_name %></a> <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
+        <p><%= comment.body %> —
+        <% unless comment.user.nil? %>
+          <a href="/users/<%= comment.user.id %>"><%= comment.user.user_name %></a>
+        <% else %>
+          deleted_user
+        <% end %>
+        <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
       </div>
     <% end %>
 

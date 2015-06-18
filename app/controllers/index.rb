@@ -40,7 +40,7 @@ end
 
 # Remove after reviewing look and feel
 get '/questions/test' do
-  @question = Question.first
+  @question = Question.find(2)
   @answers = @question.answers
   erb :"questions/index"
 end
