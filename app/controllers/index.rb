@@ -38,13 +38,26 @@ post '/questions' do
   end
 end
 
-# Remove after reviewing look and feel
+# Begin Jason's testing routes
+
 get '/questions/test' do
-  @question = Question.find(2)
-  @answers = @question.answers
+  puts 'HI'
+  @questions = Question.all
+  puts @questions.length
   erb :"questions/index"
 end
+
+get '/questions/show/test' do
+  @question = Question.find(2)
+  @answers = @question.answers
+  erb :"questions/show"
+end
+
+# End Jason's testing routes
 
 get '/questions/:id' do
 
 end
+
+
+
