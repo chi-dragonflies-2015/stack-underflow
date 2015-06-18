@@ -26,7 +26,6 @@ post '/login' do
 end
 
 get '/questions/:id/answers' do  |id|
-  p "<" * 30 + "PARAMS: " + id + ">" * 30
   @question = Question.find(id)
   @answers = @question.answers
   erb :'/questions/show'
@@ -45,6 +44,12 @@ put '/questions/:id' do #secure
   question.update(params[:question])
   redirect "/questions/#{params[:id]}/answers"
 
+end
+
+delete '/questions/:id' do
+  question = Question.find(params[:id])
+  question.destroy
+  redirect "/questions"
 end
 
 get '/questions/new' do #secure
