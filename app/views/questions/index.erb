@@ -1,0 +1,26 @@
+
+  <div class="tabs">
+    <span class="fl-l">Top Questions</span>
+    <ul>
+      <li class="active">newest</li>
+      <li>votes</li>
+      <li>comments</li>
+      <li>unanswered</li>
+    </ul>
+  </div>
+
+  <% @questions.each do |question| %>
+    <div class="listing">
+      <div class="statbox">
+        <p><%= question.votes.count %></p>
+        <p class="smallest">votes</p>
+      </div>
+      <div class="statbox highlight">
+        <p><%= question.answers.count %></p>
+        <p class="smallest">answers</p>
+      </div>
+      <p><a href="/questions/<%= question.id %>/answers"><%= question.title %></a></p>
+      <p class="fineprint">asked on <%= question.created_at.strftime("%b %d, %Y") %> by <a href="/users/<%= question.user.id %>"><%= question.user.user_name %></a></p>
+    </div>
+  <% end %>
+

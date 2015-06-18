@@ -58,4 +58,23 @@ post '/questions' do #secure
   end
 end
 
+get '/questions/:id/answers/new' do
+  redirect '/questions/:id/answers' if !session[:user_id]
+  @question = Question.find(params[:id])
+  erb :answer_form
+end
+
+post '/questions/:id/answers' do
+  answer = Answer.new(params[:answer])
+  if answer.save
+    redirect '/questions/:id/answers'
+  else
+    @not_saved = true
+    erb :answer_form
+  end
+end
+
+
+
+
 
