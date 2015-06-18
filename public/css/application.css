@@ -138,6 +138,10 @@ nav a:visited {
   float: left;
 }
 
+.fl-r {
+  float: right;
+}
+
 .listing {
   width: 100%;
   border-bottom: 1px solid #ccc;
@@ -179,6 +183,18 @@ a:visited {
   vertical-align: bottom;
 }
 
+.inline {
+  display: inline;
+}
+
+.logout {
+  border      : 0;
+  background  : transparent;
+  font-family : inherit;
+  font-size   : 1em;
+  cursor      : pointer;
+}
+
 
 /***********************
  * LOGIN STYLES
@@ -197,5 +213,4 @@ a:visited {
   width: 100px;
   text-align: center;
 }
-
 

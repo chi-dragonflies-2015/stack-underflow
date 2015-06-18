@@ -13,7 +13,8 @@
   <div class="container">
     <header>
       <% if @user %>
-        <p class="white">Hello, <a href="/users/@user.id"><%= @user.user_name %></a> | <a href="/logout">Log out</a></p>
+        <span class="white inline">Hello, <a href="/users/@user.id"><%= @user.user_name %></a> |
+          <form method="POST" action="/logout" class="inline"><input type="submit" class="logout white" value="Log out"></form></span>
       <% else %>
         <p class="white"><a href="/login">Log in</a> | <a href="/users/new">Create an account</a></p>
       <% end %>
