@@ -12,15 +12,19 @@
 <body>
   <div class="container">
     <header>
-      <p class="white">Login/logout, userid info will go here</p>
+      <% if @user %>
+        <p class="white">Hello, <a href="/users/@user.id"><%= @user.user_name %></a> | <a href="/logout">Log out</a></p>
+      <% else %>
+        <p class="white"><a href="/login">Log in</a></p>
+      <% end %>
     </header>
 
     <nav>
       <img src="logo.png" border=0>
       <ul class="nav-menu">
-        <li><a href="">Questions</a></li>
-        <li><a href="">Users</a></li>
-        <li><a href="">Ask Question</a></li>
+        <li><a href="/questions">Questions</a></li>
+        <li><a href="/users">Users</a></li>
+        <li><a href="/questions/new">Ask Question</a></li>
       </ul>
     </nav>
 

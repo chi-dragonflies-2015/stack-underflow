@@ -38,6 +38,18 @@ nav a:visited {
   color: white;
 }
 
+.white a {
+  color: orange;
+}
+
+.white a:visited {
+  color: orange;
+}
+
+.white a:hover {
+  color: OrangeRed;
+}
+
 .black {
   color: black;
 }
@@ -54,6 +66,18 @@ nav a:visited {
   margin: 0.1em;
 }
 
+.nav-menu a {
+  color: white;
+}
+
+.nav-menu a:visited {
+  color: white;
+}
+
+.nav-menu a:hover {
+  color: LightSalmon;
+}
+
 .main {
   width: 700px;
   padding-right: 2em;
@@ -62,11 +86,12 @@ nav a:visited {
 .sidebar {
   position: relative;
   width: 200px;
-  padding: 0 0 0 1em;
+  padding: 0 1em 0 1em;
   text-align: left;
   float: right;
   background-color: orange;
   font-size: 0.75em;
+  border: 1px solid gray;
 }
 
 .tabs {
