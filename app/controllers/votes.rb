@@ -5,7 +5,7 @@
 
 #Routes, reloads, and redirects all need to be adapted to fit our current layout stuff.
 
-post '/questions/:id/vote' do |id|
+post '/questions/:id/votes' do |id|
   value = params[:value]
   user = current_user
   @question = Question.find_by(id: id)
@@ -23,11 +23,11 @@ post '/questions/:id/vote' do |id|
   end
 end
 
-post '/answers/:id/vote' do
+post '/answers/:id/votes' do |id|
   #need to pass a negative one or positive one
   value = params[:value]
   user = current_user
-  @answer = Answer.find_by(id: :id)
+  @answer = Answer.find_by(id: id)
   if @answer.eligible_voter?(user)
     #TODO reload the page to display the new vote
     @answer.votes.create(user: user, value: value)
@@ -38,7 +38,7 @@ post '/answers/:id/vote' do
   end
 end
 
-post '/comments/:id/vote' do
+post '/comments/:id/votes' do
   #need to pass a negative one or positive one
   value = params[:value]
   user = current_user
