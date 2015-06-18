@@ -2,7 +2,7 @@
 
 <div class="votebox">
   <%= erb :_upvote %>
-  <%= @question.votes.count %>
+  <%= @question.reputation %>
   <%= erb :_downvote %>
 </div>
 
@@ -28,7 +28,7 @@
 <% @answers.each do |answer| %>
   <div class="votebox">
     <%= erb :_upvote %>
-    <%= answer.votes.count %>
+    <%= answer.reputation %>
     <%= erb :_downvote %>
   </div>
 
