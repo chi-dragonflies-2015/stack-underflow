@@ -36,7 +36,6 @@
     </div>
   <% end %>
 
-  <div class="commenttitle">Your Comment</div>
   <%= erb :'/question_comment_form', :locals => { :question => @question } %>
 </div>
 
@@ -79,10 +78,8 @@
       </div>
     <% end %>
 
-    <div class="commenttitle">Your Comment</div>
     <%= erb :'/answer_comment_form', :locals => { :answer => answer } %>
   </div>
 <% end %>
 
-<div class="answertitle">Your Answer</div>
 <%= erb :'/answer_form' %>

@@ -3,7 +3,7 @@
 <% end %>
 
 <form method="POST" action="/questions/<%= @question.id %>/comments">
-  <h3>Submit a comment for this question:</h3>
+  <div class="commenttitle">Your Comment</div>
   <p><textarea name="comment[body]" placeholder="comment"></textarea></p>
   <input type="submit">
 </form>
