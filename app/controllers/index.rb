@@ -1,6 +1,13 @@
 get '/' do
-  @questions = Question.all #.limit(10)
+  @questions = Question.all
+  @answers = Answer.all
+  @comments = Comment.all
   erb :index
+end
+
+get '/questions' do
+  @questions = Question.all
+  erb :'questions/index'
 end
 
 get '/login' do #>>>>
@@ -19,8 +26,9 @@ post '/login' do
 end
 
 get '/questions/:id/answers' do
+  @questions = Question.all
   @question = Question.find(params[:id])
-  erb :'/questions/index'
+  erb :'/questions/show'
 
 end
 
@@ -55,7 +63,6 @@ post '/questions' do #secure
   end
 end
 
-<<<<<<< HEAD
 get '/questions/:id/answers/new' do
   redirect '/questions/:id/answers' if !session[:user_id]
   @question = Question.find(params[:id])
@@ -134,15 +141,4 @@ end
 
 
 
-=======
-# Remove after reviewing look and feel
-get '/questions/test' do
-  @question = Question.find(2)
-  @answers = @question.answers
-  erb :"questions/index"
-end
 
-get '/questions/:id' do
-
-end
->>>>>>> 5b2fe94aeed89945c8e320d907600c5467faf4c6
