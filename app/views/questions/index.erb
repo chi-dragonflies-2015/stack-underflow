@@ -2,12 +2,12 @@
 
 <div class="votebox">
   <form name="upvote" action="/questions/<%=@question.id%>/vote" method="post">
-    <input type="hidden" value="1">
+    <input type="hidden" name="value" value="1">
     <input type="image" value="upvote" src="/upvote.jpg">
     </form>
   <%= @question.reputation %>
   <form name="downvote" action="/questions/<%=@question.id%>/vote" method="post">
-    <input type="hidden" value="-1">
+    <input type="hidden" name="value" value="-1">
     <input type="image" value="downvote" src="/downvote.jpg">
     </form>
 </div>
