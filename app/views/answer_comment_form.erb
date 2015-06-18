@@ -2,7 +2,7 @@
   <p>DID NOT SAVE! Try again.</p>
 <% end %>
 
-<form method="POST" action="/questions/<%= @question.id %>/answers/<%= @answer.id %>/comments">
+<form method="POST" action="/questions/<%= @question.id %>/answers/<%= answer.id %>/comments">
   <h3>Submit a comment for this answer:</h3>
   <p><textarea name="comment[body]" placeholder="comment"></textarea></p>
   <input type="submit">
