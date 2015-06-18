@@ -86,11 +86,12 @@ nav a:visited {
 .sidebar {
   position: relative;
   width: 200px;
-  padding: 0 0 0 1em;
+  padding: 0 1em 0 1em;
   text-align: left;
   float: right;
   background-color: orange;
   font-size: 0.75em;
+  border: 1px solid gray;
 }
 
 .tabs {
