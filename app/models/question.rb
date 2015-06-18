@@ -9,4 +9,7 @@ class Question < ActiveRecord::Base
   validates :title, { presence: true }
   validates :body, { presence: true }
 
+  def eligible_voter? (user)
+    !self.voters.include?(user)
+  end
 end
