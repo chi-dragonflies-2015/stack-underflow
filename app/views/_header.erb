@@ -1,7 +1,7 @@
 <header>
   <% if current_user %>
     <span class="white inline">Hello, <a href="/users/<%= current_user.id %>"><%= current_user.user_name %></a> |
-      <form method="POST" action="/logout" class="inline"><input type="submit" class="logout white" value="Log out"></form></span>
+      <form method="POST" action="/logout" class="inline"><input type="hidden" name="_method" value="delete"><input type="submit" class="logout white" value="Log out"></form></span>
   <% else %>
     <p class="white"><a href="/login">Log in</a> | <a href="/users/new">Create an account</a></p>
   <% end %>

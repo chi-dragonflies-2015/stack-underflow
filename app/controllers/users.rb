@@ -30,6 +30,8 @@ get '/users/:id/edit' do |id|
   erb :"/users/edit"
 end
 
+get
+
 put '/users/:id' do |id|
   @user = User.find_by(id: id)
   redirect back unless @user == current_user
