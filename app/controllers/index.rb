@@ -4,6 +4,10 @@ get '/' do
   erb :index
 end
 
+delete '/logout' do
+  logout_user
+end
+
 get '/login' do
   erb :"login"
 end
