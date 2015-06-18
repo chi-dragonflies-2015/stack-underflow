@@ -32,7 +32,7 @@ end
 
 put '/users/:id' do |id|
   @user = User.find_by(id: id)
-  redirect back unless current_user == current_user
+  redirect back unless @user == current_user
   if !params[:password].nil?
     if params[:password] != params[:password_2]
       #throw an error with ajax or something if this gets passed
