@@ -3,7 +3,8 @@
 <% end %>
 
 <form method="POST" action="/questions/<%= @question.id %>/answers">
-  <h3>Submit an answer:</h3>
+  <h3>Edit Answer:</h3>
+  <input type="hidden" name="_method" method="put">
   <p><textarea name="answer[body]" placeholder="question"></textarea></p>
   <input type="submit">
 </form>
