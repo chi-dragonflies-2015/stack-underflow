@@ -10,6 +10,6 @@ class Question < ActiveRecord::Base
   validates :body, { presence: true }
 
   def eligible_voter? (user)
-    !self.voters.include?(user)
+    !self.voters.include?(user) && self.user != user
   end
 end

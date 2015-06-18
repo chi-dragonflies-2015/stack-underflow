@@ -5,4 +5,8 @@ class Comment < ActiveRecord::Base
   has_many :voters, through: :votes, source: :user
 
   validates :body, { presence: true }
+
+  def eligible_voter? (user)
+    !self.voters.include?(user) && self.user != user
+  end
 end
