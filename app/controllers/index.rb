@@ -95,7 +95,7 @@ get '/questions/:id/comments/new' do
   erb :question_comment_form
 end
 
-post 'questions/:id/comments' do
+post '/questions/:id/comments' do
   comment = Comment.new(params[:comment])
   if comment.save
     redirect "/questions/#{params[:id]}/answers"
@@ -103,7 +103,19 @@ post 'questions/:id/comments' do
     @not_saved = true
     erb :answer_comment_form
   end
-
 end
+
+get '/questions/:id/comments/edit' do
+  @question = Question.find(params[:id])
+  erb :comment_edit_form
+end
+
+put '/questions/:id/comments' do
+  comment = Comment.find(params[:id])
+  comment.update(params[:comment])
+  redirect "/questions/#{params[:id]}/answers"
+end
+
+get '/questions/:q'
 
 
