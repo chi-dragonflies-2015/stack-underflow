@@ -20,7 +20,7 @@
     </header>
 
     <nav>
-      <img src="logo.png" border=0>
+      <a href="/"><img src="/logo.png" border=0></a>
       <ul class="nav-menu">
         <li><a href="/questions">Questions</a></li>
         <li><a href="/users">Users</a></li>
@@ -30,7 +30,9 @@
 
     <%= erb :_sidebar %>
 
-    <%= yield %>
+    <div class="main">
+      <%= yield %>
+    </div>
 
   </div>
 </body>
