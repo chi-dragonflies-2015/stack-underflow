@@ -5,6 +5,11 @@ get '/' do
   erb :index
 end
 
+
+delete '/logout' do
+  logout_user
+end
+
 get '/questions' do
   @questions = Question.all
   erb :'questions/index'
@@ -33,14 +38,14 @@ get '/questions/:id/answers' do
 end
 
 get '/questions/:id/edit' do #secure
-  redirect "/questions/#{params[:id]}" if !session[:user_id] 
+  redirect "/questions/#{params[:id]}" if !session[:user_id]
   @question = Question.find(params[:id])
   erb :question_edit_form
 
 end
 
 put '/questions/:id' do #secure
-  redirect "/questions/#{params[:id]}" if !session[:user_id] 
+  redirect "/questions/#{params[:id]}" if !session[:user_id]
   question = Question.find(params[:id])
   question.update(params[:question])
   redirect "/questions/#{params[:id]}"
