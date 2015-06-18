@@ -42,7 +42,7 @@ end
 get '/questions/test' do
   @question = Question.find(2)
   @answers = @question.answers
-  erb :"questions/index"
+  erb :"questions/show"
 end
 
 get '/questions/:id' do
