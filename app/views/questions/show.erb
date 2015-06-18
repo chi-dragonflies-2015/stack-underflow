@@ -1,9 +1,15 @@
 <div class="questiontitle"><%= @question.title %></div>
 
 <div class="votebox">
-  <%= erb :_upvote %>
+  <form name="upvote" action="/questions/<%= @question.id %>/votes" method="post">
+  <input type="hidden" name="value" value="1">
+  <input type="image" value="upvote" src="/upvote.jpg">
+  </form>
   <%= @question.reputation %>
-  <%= erb :_downvote %>
+  <form name="downvote" action="/questions/<%= @question.id %>/votes" method="post">
+  <input type="hidden" name="value" value="-1">
+  <input type="image" value="downvote" src="/downvote.jpg">
+  </form>
 </div>
 
 <div class="questionbody">
@@ -38,9 +44,15 @@
 
 <% @answers.each do |answer| %>
   <div class="votebox">
-    <%= erb :_upvote %>
+    <form name="upvote" action="/questions/<%= answer.id %>/votes" method="post">
+    <input type="hidden" name="value" value="1">
+    <input type="image" value="upvote" src="/upvote.jpg">
+    </form>
     <%= answer.reputation %>
-    <%= erb :_downvote %>
+    <form name="downvote" action="/questions/<%= answer.id %>/votes" method="post">
+    <input type="hidden" name="value" value="-1">
+    <input type="image" value="downvote" src="/downvote.jpg">
+    </form>
   </div>
 
   <div class="answerbody">
