@@ -1,5 +1,5 @@
 get '/' do
-  @user = User.find(session[:user_id])
+  #@current_user = User.find(session[:user_id])
   @questions = Question.all #.limit(10)
   erb :index
 end
