@@ -8,7 +8,7 @@ post '/questions/:id/votes' do
   value = params[:value]
   user = User.find_by(id: session[:user_id])
   @question = Question.find_by(id: :id)
-  if eligible_voter?
+  if @question.eligible_voter?(user)
     #TODO reload the page to display the new vote
     @question.votes.create(user: user, value: value)
     erb :"questions/"
@@ -23,7 +23,7 @@ post '/answers/:id/votes' do
   value = params[:value]
   user = User.find_by(id: session[:user_id])
   @answer = Answer.find_by(id: :id)
-  if eligible_voter?
+  if @answer.eligible_voter?(user)
     #TODO reload the page to display the new vote
     @answer.votes.create(user: user, value: value)
     erb :"answers/"
@@ -38,7 +38,7 @@ post '/comments/:id/votes' do
   value = params[:value]
   user = User.find_by(id: session[:user_id])
   @comment = Comment.find_by(id: :id)
-  if eligible_voter?
+  if @comment.eligible_voter?(user)
     #TODO reload the page to display the new vote
     @comment.votes.create(user: user, value: value)
     erb :"comments/"
