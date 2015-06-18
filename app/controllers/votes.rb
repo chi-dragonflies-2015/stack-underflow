@@ -3,10 +3,11 @@
 
 #voting rules--can't vote on your own contribution. can't vote twice.
 
+#Routes, reloads, and redirects all need to be adapted to fit our current layout stuff.
+
 post '/questions/:id/votes' do
-  #need to pass a negative one or positive one
   value = params[:value]
-  user = User.find_by(id: session[:user_id])
+  user = current_user
   @question = Question.find_by(id: :id)
   if @question.eligible_voter?(user)
     #TODO reload the page to display the new vote
@@ -21,7 +22,7 @@ end
 post '/answers/:id/votes' do
   #need to pass a negative one or positive one
   value = params[:value]
-  user = User.find_by(id: session[:user_id])
+  user = current_user
   @answer = Answer.find_by(id: :id)
   if @answer.eligible_voter?(user)
     #TODO reload the page to display the new vote
@@ -36,7 +37,7 @@ end
 post '/comments/:id/votes' do
   #need to pass a negative one or positive one
   value = params[:value]
-  user = User.find_by(id: session[:user_id])
+  user = current_user
   @comment = Comment.find_by(id: :id)
   if @comment.eligible_voter?(user)
     #TODO reload the page to display the new vote
