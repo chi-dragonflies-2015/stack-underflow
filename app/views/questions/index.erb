@@ -1,0 +1,35 @@
+<div class="questiontitle"><%= @question.title %></div>
+
+<div class="votebox">
+  <%= erb :_upvote %>
+  <%= @question.votes.count %>
+  <%= erb :_downvote %>
+</div>
+
+<div class="questionbody">
+  <p><%= @question.body %></p>
+  <p class="posterbox">
+    Asked on <%= @question.created_at.strftime("%b %d, %Y at %l:%M %p") %> by <a href="/users/<%= @question.user.id %>"><%= @question.user.user_name %></a>
+  </p>
+</div>
+
+<div class="answertitle">Answers</div>
+
+<% @answers.each do |answer| %>
+  <div class="votebox">
+    <%= erb :_upvote %>
+    <%= answer.votes.count %>
+    <%= erb :_downvote %>
+  </div>
+
+  <div class="answerbody">
+    <p><%= answer.body %></p>
+    <p class="posterbox">
+      Answered on <%= answer.created_at.strftime("%b %d, %Y at %l:%M %p") %> by <a href="/users/<%= answer.user.id %>"><%= answer.user.user_name %></a>
+    </p>
+  </div>
+<% end %>
+
+<div class="answertitle">Your Answer</div>
+
+<%= erb :_answer_form %>

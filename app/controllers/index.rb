@@ -37,3 +37,9 @@ post '/questions' do
     redirect '/question_form'
   end
 end
+
+get '/questions/test' do
+  @question = Question.first
+  @answers = @question.answers
+  erb :"questions/index"
+end
