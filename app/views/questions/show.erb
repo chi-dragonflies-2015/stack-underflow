@@ -18,7 +18,7 @@
   <p class="posterbox">
     Asked on <%= @question.created_at.strftime("%b %d, %Y at %l:%M %p") %> by
       <% unless @question.user.nil? %>
-        <a href="/users/<%= question.user.id %>"><%= @question.user.user_name %></a>
+        <a href="/users/<%= @question.user.id %>"><%= @question.user.user_name %></a>
       <% else %>
         deleted_user
       <% end %>
@@ -44,12 +44,12 @@
 
 <% @answers.each do |answer| %>
   <div class="votebox">
-    <form name="upvote" action="/questions/<%= answer.id %>/votes" method="post">
+    <form name="upvote" action="/answers/<%= answer.id %>/votes" method="post">
     <input type="hidden" name="value" value="1">
     <input type="image" value="upvote" src="/upvote.jpg">
     </form>
     <%= answer.reputation %>
-    <form name="downvote" action="/questions/<%= answer.id %>/votes" method="post">
+    <form name="downvote" action="/answers/<%= answer.id %>/votes" method="post">
     <input type="hidden" name="value" value="-1">
     <input type="image" value="downvote" src="/downvote.jpg">
     </form>
