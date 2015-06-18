@@ -1,17 +1,16 @@
-
   <div>
     <form name="signup" action="/users/new" method="POST">
       <label for="user[first_name]">First Name </label>
-      <input type="text" name="user[first_name]">
+      <input type="text" name="user[first_name]" value ="<%=@user.first_name %>">
       <br>
       <label for="user[last_name]"> Last Name </label>
-      <input type="text" name="user[last_name]">
+      <input type="text" name="user[last_name]" value ="<%=@user.last_name %>">
       <br>
       <label for="user[user_name]"> User Name </label>
-      <input type="text" name="user[user_name]">
+      <input type="text" name="user[user_name]" value ="<%=@user.user_name %>">
       <br>
       <label for="user[email]"> Email Address </label>
-      <input type="email" name="user[email]">
+      <input type="email" name="user[email]" value ="<%=@user.email %>">
       <br>
       <label for="password"> Password </label>
       <input type="password" name="password">
@@ -22,4 +21,3 @@
       <input type="submit" value="create account">
     </form>
   </div>
-

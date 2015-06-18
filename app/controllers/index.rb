@@ -1,4 +1,5 @@
 get '/' do
+  #@current_user = User.find(session[:user_id])
   @questions = Question.all #.limit(10)
   erb :index
 end
@@ -37,4 +38,26 @@ post '/questions' do
   end
 end
 
+# Begin Jason's testing routes
+
+get '/questions/test' do
+  puts 'HI'
+  @questions = Question.all
+  puts @questions.length
+  erb :"questions/index"
+end
+
+get '/questions/show/test' do
+  @question = Question.find(2)
+  @answers = @question.answers
+  erb :"questions/show"
+end
+
+# End Jason's testing routes
+
 get '/questions/:id' do
+
+end
+
+
+

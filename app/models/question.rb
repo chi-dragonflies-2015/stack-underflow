@@ -8,4 +8,7 @@ class Question < ActiveRecord::Base
   validates :title, { presence: true }
   validates :body, { presence: true }
 
+  def reputation
+    votes.pluck(:value).reduce(:+) || 0
+  end
 end

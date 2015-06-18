@@ -1,11 +1,11 @@
 helpers do
 
   def current_user
-    User.new(params[:login])
+    User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
   def logout_user
-    sessions[:user_id] = nil
+    session[:user_id] = nil
   end
 
   def existing_user?
@@ -15,5 +15,7 @@ helpers do
       false
     end
   end
+
+
 
 end

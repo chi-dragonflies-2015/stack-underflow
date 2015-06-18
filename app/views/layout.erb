@@ -11,23 +11,12 @@
 </head>
 <body>
   <div class="container">
-    <header>
-      <p class="white">Login/logout, userid info will go here</p>
-    </header>
-
-    <nav>
-      <img src="logo.png" border=0>
-      <ul class="nav-menu">
-        <li><a href="">Questions</a></li>
-        <li><a href="">Users</a></li>
-        <li><a href="">Ask Question</a></li>
-      </ul>
-    </nav>
-
+    <%= erb :_header %>
+    <%= erb :_nav %>
     <%= erb :_sidebar %>
-
-    <%= yield %>
-
+    <div class="main">
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>

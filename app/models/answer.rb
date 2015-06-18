@@ -5,4 +5,8 @@ class Answer < ActiveRecord::Base
   belongs_to  :user
 
   validates :body, { presence: true }
+
+  def reputation
+    votes.pluck(:value).reduce(:+) || 0
+  end
 end

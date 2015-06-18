@@ -27,7 +27,8 @@ end
   temp_id = 1
   vote_count.times do
     voter = User.find(temp_id)
-    Question.last.votes.create!(user: voter)
+    value = [1, -1].sample
+    Question.last.votes.create!(user: voter, value: value)
     temp_id +=1
   end
 
@@ -54,7 +55,8 @@ end
   temp_id = 1
   vote_count.times do
     voter = User.find(temp_id)
-    Answer.last.votes.create!(user: voter)
+    value = [1, -1].sample
+    Answer.last.votes.create!(user: voter, value: value)
     temp_id +=1
   end
 

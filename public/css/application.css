@@ -38,6 +38,18 @@ nav a:visited {
   color: white;
 }
 
+.white a {
+  color: orange;
+}
+
+.white a:visited {
+  color: orange;
+}
+
+.white a:hover {
+  color: OrangeRed;
+}
+
 .black {
   color: black;
 }
@@ -54,19 +66,32 @@ nav a:visited {
   margin: 0.1em;
 }
 
+.nav-menu a {
+  color: white;
+}
+
+.nav-menu a:visited {
+  color: white;
+}
+
+.nav-menu a:hover {
+  color: LightSalmon;
+}
+
 .main {
   width: 700px;
-  padding-right: 2em;
+  padding: 0 2em 0 0;
 }
 
 .sidebar {
   position: relative;
   width: 200px;
-  padding: 0 0 0 1em;
+  padding: 0 1em 0 1em;
   text-align: left;
   float: right;
   background-color: orange;
   font-size: 0.75em;
+  border: 1px solid gray;
 }
 
 .tabs {
@@ -90,7 +115,6 @@ nav a:visited {
 .tabs li a {
     color: #666;
     text-decoration: none;
-
 }
 
 .tabs li.active {
@@ -111,6 +135,10 @@ nav a:visited {
 
 .fl-l {
   float: left;
+}
+
+.fl-r {
+  float: right;
 }
 
 .listing {
@@ -154,20 +182,24 @@ a:visited {
   vertical-align: bottom;
 }
 
-
-/***********************
- * LOGIN STYLES
- ***********************/
- .debug {
-  border: 1px solid red;
- }
-
-.login-styles {
-  width: 50%;
+.inline {
+  display: inline;
 }
 
-form {
-  width: 50%;
+.clear {
+  clear: left;
+}
+
+.logout {
+  border      : 0;
+  background  : transparent;
+  font-family : inherit;
+  font-size   : 1em;
+  cursor      : pointer;
+}
+
+.debug {
+  border: 1px solid red;
 }
 
 .submit {
@@ -181,4 +213,80 @@ form {
   text-align: center;
 }
 
+.votebox {
+  position: absolute;
+  text-align: center;
+  margin: 0;
+  width: 50px;
+}
+
+.votebox input {
+  border      : 0;
+  background  : transparent;
+  font-family : inherit;
+  font-size   : 1em;
+  cursor      : pointer;
+}
+
+.questiontitle {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 0 0 0.5em 0;
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.questionbody {
+  position: relative;
+  margin-left: 70px;
+  border-bottom: 1px solid #ccc;
+}
+
+.posterbox {
+  text-align: right;
+  padding: 0.3em;
+  background-color: Lavender;
+  font-size: 0.75em;
+}
+
+.answertitle {
+  width: 100%;
+  padding: 0;
+  font-size: 1em;
+  margin: 1em 0 1em 0;
+}
+
+.answerbody {
+  position: relative;
+  margin-left: 70px;
+  border-bottom: 1px solid #ccc;
+  padding: 0 0 0.5em 0;
+  margin-bottom: 1em;
+}
+
+.commenttitle {
+  width: 100%;
+  padding: 0;
+  font-size: 0.75em;
+  margin: 0;
+}
+
+.commentbody {
+  border-bottom: 1px solid #ccc;
+  padding-left: 2em;
+  margin-bottom: 1em;
+  font-size: 0.5em;
+}
+
+textarea {
+  width: 100%;
+}
+
+.generictitle {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 0 0 0.5em 0;
+  font-size: 2em;
+
+}
 
