@@ -1,16 +1,20 @@
+/* --------------------------------------- Global attributes */
+
 html, body {
   overflow-x: hidden;
-}
-
-.container {
-  margin: 0 auto;
-  width: 900px;
 }
 
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+/* --------------------------------------- Layout: General sections */
+
+.container {
+  margin: 0 auto;
+  width: 900px;
 }
 
 header {
@@ -26,33 +30,23 @@ nav {
   text-align: left;
 }
 
-nav a {
-  color: white;
+.main {
+  width: 700px;
+  padding: 0 2em 0 0;
 }
 
-nav a:visited {
-  color: white;
+.sidebar {
+  position: relative;
+  width: 200px;
+  padding: 0 1em 0 1em;
+  text-align: left;
+  float: right;
+  background-color: orange;
+  font-size: 0.75em;
+  border: 1px solid gray;
 }
 
-.white {
-  color: white;
-}
-
-.white a {
-  color: orange;
-}
-
-.white a:visited {
-  color: orange;
-}
-
-.white a:hover {
-  color: OrangeRed;
-}
-
-.black {
-  color: black;
-}
+/* --------------------------------------- Layout: gray navigation menu */
 
 .nav-menu {
   float: right;
@@ -78,21 +72,7 @@ nav a:visited {
   color: DarkSalmon;
 }
 
-.main {
-  width: 700px;
-  padding: 0 2em 0 0;
-}
-
-.sidebar {
-  position: relative;
-  width: 200px;
-  padding: 0 1em 0 1em;
-  text-align: left;
-  float: right;
-  background-color: orange;
-  font-size: 0.75em;
-  border: 1px solid gray;
-}
+/* --------------------------------------- Layout: tabs on index page */
 
 .tabs {
   width: 100%;
@@ -133,100 +113,7 @@ nav a:visited {
     border-bottom: none;
 }
 
-.fl-l {
-  float: left;
-}
-
-.fl-r {
-  float: right;
-}
-
-.listing {
-  width: 100%;
-  border-bottom: 1px solid #ccc;
-  padding: 1em;
-}
-
-.statbox {
-  float: left;
-  text-align: center;
-  margin: 0 20px 0 0;
-  width: 50px;
-}
-
-.smallest {
-  font-size: 0.5em;
-}
-
-.highlight {
-  background-color: green;
-  color: white;
-}
-
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  color: LightBlue;
-}
-
-a:visited {
-  color: DarkBlue;
-}
-
-.fineprint {
-  text-align: right;
-  font-size: 0.75em;
-  color: #ccc;
-  vertical-align: bottom;
-}
-
-.inline {
-  display: inline;
-}
-
-.clear {
-  clear: left;
-}
-
-.logout {
-  border      : 0;
-  background  : transparent;
-  font-family : inherit;
-  font-size   : 1em;
-  cursor      : pointer;
-}
-
-.debug {
-  border: 1px solid red;
-}
-
-.submit {
-  background-color: #888;
-  color: white;
-  display: block;
-  height: 40px;
-  line-height: 40px;
-  text-decoration: none;
-  width: 100px;
-  text-align: center;
-}
-
-.votebox {
-  position: absolute;
-  text-align: center;
-  margin: 0;
-  width: 50px;
-}
-
-.votebox input {
-  border      : 0;
-  background  : transparent;
-  font-family : inherit;
-  font-size   : 1em;
-  cursor      : pointer;
-}
+/* --------------------------------------- Layout: questions, answers and comments */
 
 .questiontitle {
   width: 100%;
@@ -240,13 +127,6 @@ a:visited {
   position: relative;
   margin-left: 70px;
   border-bottom: 1px solid #ccc;
-}
-
-.posterbox {
-  text-align: right;
-  padding: 0.3em;
-  background-color: Lavender;
-  font-size: 0.75em;
 }
 
 .answertitle {
@@ -282,8 +162,72 @@ a:visited {
   font-size: 0.5em;
 }
 
-textarea {
+/* --------------------------------------- Layout: Everything else */
+
+.listing {
   width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 1em;
+}
+
+.statbox {
+  float: left;
+  text-align: center;
+  margin: 0 20px 0 0;
+  width: 50px;
+}
+
+.highlight {
+  background-color: green;
+  color: white;
+}
+
+.fineprint {
+  text-align: right;
+  font-size: 0.75em;
+  color: #ccc;
+  vertical-align: bottom;
+}
+
+.logout {
+  border      : 0;
+  background  : transparent;
+  font-family : inherit;
+  font-size   : 1em;
+  cursor      : pointer;
+}
+
+.votebox {
+  position: absolute;
+  text-align: center;
+  margin: 0;
+  width: 50px;
+}
+
+.votebox input {
+  border      : 0;
+  background  : transparent;
+  font-family : inherit;
+  font-size   : 1em;
+  cursor      : pointer;
+}
+
+.submit {
+  background-color: #888;
+  color: white;
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  text-decoration: none;
+  width: 100px;
+  text-align: center;
+}
+
+.posterbox {
+  text-align: right;
+  padding: 0.3em;
+  background-color: Lavender;
+  font-size: 0.75em;
 }
 
 .generictitle {
@@ -301,6 +245,79 @@ textarea {
   cursor      : pointer;
 }
 
+/* --------------------------------------- Links */
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: LightBlue;
+}
+
+a:visited {
+  color: DarkBlue;
+}
+
+nav a {
+  color: white;
+}
+
+nav a:visited {
+  color: white;
+}
+
+.white a {
+  color: orange;
+}
+
+.white a:visited {
+  color: orange;
+}
+
+.white a:hover {
+  color: OrangeRed;
+}
+
+/* --------------------------------------- Atomic-style attributes */
+
+.white {
+  color: white;
+}
+
+.black {
+  color: black;
+}
+
+.fl-l {
+  float: left;
+}
+
+.fl-r {
+  float: right;
+}
+
+.smallest {
+  font-size: 0.5em;
+}
+
+.inline {
+  display: inline;
+}
+
+.clear {
+  clear: left;
+}
+
+.debug {
+  border: 1px solid red;
+}
+
+textarea {
+  width: 100%;
+}
+
 .w-100 {
   width: 100%;
 }
+
