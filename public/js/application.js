@@ -9,8 +9,8 @@ $(document).ready(function() {
   $("#question_down").on("submit", voteQuestion);
   $("#answer_up").on("submit", voteAnswer);
   $("#answer_down").on("submit", voteAnswer);
-  $("#comment_up").on("submit", voteComment);
-  $("#comment_down").on("submit", voteComment);
+  //$("#comment_up").on("submit", voteComment);
+  //$("#comment_down").on("submit", voteComment);
 
   function voteQuestion(event) {
     event.preventDefault()
@@ -21,22 +21,37 @@ $(document).ready(function() {
 
     $.ajax({
       url: url,
-      method: url,
+      method: method,
       data: data,
     })
-      .done( function(new_reputation) {
-        $("#questionReputation").text(new_reputation);
+      .done( function(reputation) {
+        $("#questionReputation").text(reputation.value);
       });
   };
 
   function voteAnswer(event) {
     event.preventDefault()
-    $var voteButton = $(event.target);
+    var $voteButton = $(event.target);
+    var url = $voteButton.attr("action");
+    var method = $voteButton.attr("method");
+    var data = $voteButton.serialize();
+    console.log(event.target);
+    console.log(url)
+    console.log(method)
+    console.log(data)
+
+    $.ajax({
+      url: url,
+      method: method,
+      data: data
+    })
+      .done( function(reputation) {
+        $("#answerReputation").text(reputation.value);
+      });
   };
 
-  function voteComment(event) {
-
-  };
+  // function voteComment(event) {
+  // };
 
 
   $(".posterbox").on("click", function(event) {
