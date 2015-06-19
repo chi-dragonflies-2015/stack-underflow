@@ -134,7 +134,7 @@ end
 
 put '/questions/:question_id/comments/:comment_id' do
   p ">" * 50
-  comment = Comment.find_by(params[:comment_id])
+  comment = Comment.find_by(id: params[:comment_id])
   comment.update(params[:comment])
   redirect "/questions/#{params[:question_id]}/answers"
 end
