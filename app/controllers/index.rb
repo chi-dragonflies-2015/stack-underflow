@@ -137,6 +137,7 @@ end
 get '/questions/:question_id/comments/:comment_id/edit' do
   @question = Question.find(params[:question_id])
   @comment = Comment.find(params[:comment_id])
+  redirect "/questions/#{params[:question_id]}/answers" unless session[:user_id] == current_user.id && @comment.user_id == current_user.id
   erb :comment_edit_form
 end
 
