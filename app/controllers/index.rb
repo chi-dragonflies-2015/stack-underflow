@@ -52,6 +52,7 @@ end
 
 delete '/questions/:id' do
   question = Question.find(params[:id])
+  redirect "/questions/#{params[:id]}/answers" unless session[:user_id] == current_user.id && question.user_id == current_user.id
   question.destroy
   redirect "/questions"
 end
