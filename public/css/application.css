@@ -287,6 +287,13 @@ textarea {
   border-bottom: 1px solid #ccc;
   padding: 0 0 0.5em 0;
   font-size: 2em;
+}
 
+.edit {
+  border      : 0;
+  background  : transparent;
+  font-family : inherit;
+  font-size   : 0.5;
+  cursor      : pointer;
 }
 

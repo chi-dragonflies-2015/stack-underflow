@@ -15,6 +15,10 @@
 <div class="questionbody">
   <p><%= @question.body %></p>
 
+  <form method="GET" action="/questions/<%= @question.id %>/edit" class="inline">
+    <input type="submit" value="Edit question">
+  </form>
+
   <p class="posterbox">
     Asked on <%= @question.created_at.strftime("%b %d, %Y at %l:%M %p") %> by
       <% unless @question.user.nil? %>
@@ -26,13 +30,18 @@
 
   <% @question.comments.each do |comment| %>
     <div class="commentbody">
-      <p><%= comment.body %> —
+      <p>
+        <%= comment.body %> —
         <% unless comment.user.nil? %>
           <a href="/users/<%= comment.user.id %>"><%= comment.user.user_name %></a>
         <% else %>
           deleted_user
         <% end %>
-        <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
+        <%= comment.created_at.strftime("%b %d %l:%M %p") %>
+        <form method="GET" action="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit">
+          <input type="submit" value="Edit comment">
+        </form>
+      </p>
     </div>
   <% end %>
 

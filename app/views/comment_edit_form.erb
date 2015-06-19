@@ -5,6 +5,6 @@
 <form method="POST" action="/questions/<%= @question.id %>/comments/<%= @comment.id%>">
   <h3>Edit comment:</h3>
   <input type="hidden" name="_method" value="put">
-  <p><textarea name="comment[body]" placeholder="comment"></textarea></p>
+  <p><textarea name="comment[body]" value="comment"><%= @comment.body %></textarea></p>
   <input type="submit">
 </form>
