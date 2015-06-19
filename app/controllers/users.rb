@@ -1,3 +1,8 @@
+get '/users' do
+  @users = User.all
+  erb :"users/index"
+end
+
 post "/users/new" do
 
   if params[:password] != params[:password_2]
@@ -29,8 +34,6 @@ get '/users/:id/edit' do |id|
   @user = User.find_by(id: id)
   erb :"/users/edit"
 end
-
-
 
 put '/users/:id' do |id|
   @user = User.find_by(id: id)

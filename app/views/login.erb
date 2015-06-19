@@ -1,16 +1,14 @@
+<% if @incorrect_login == true %>
+  <p>INCORRECT LOGIN INFORMATION!</p>
+<% end %>
 
-
-  <% if @incorrect_login == true %>
-    <p>INCORRECT LOGIN INFORMATION!</p>
-  <% end %>
-
-  <div>
-    <form method="POST" action="/login">
-      <p><input type="text" name="login[user_name]" placeholder="username" class="w-100"></p>
-      <p><input type="password" name="login[password]" placeholder="password" class="w-100"></p>
-      <!--input type="submit"-->
-      <input type="submit" class="submit" value="SUBMIT">
-    </form>
-  </div>
+<div>
+  <form method="POST" action="/login">
+    <p><input type="text" name="login[user_name]" placeholder="username" class="w-100"></p>
+    <p><input type="password" name="login[password]" placeholder="password" class="w-100"></p>
+    <!--input type="submit"-->
+    <input type="submit" class="submit" value="SUBMIT">
+  </form>
+</div>
 
 
