@@ -43,7 +43,7 @@
           deleted_user
         <% end %>
         <%= comment.created_at.strftime("%b %d %l:%M %p") %>
-        <% if !current_user.nil? && current_user.id == comment.user.id %>
+        <% if !current_user.nil? && current_user.id == comment.user_id %>
           <form method="GET" action="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit" class="inline">
             <input type="submit" value="Edit comment">
           </form>
@@ -87,7 +87,7 @@
     <div class="answerbody">
   <% end %>
     <p><%= answer.body %></p>
-    <% if !current_user.nil? && current_user.id == answer.user.id %>
+    <% if !current_user.nil? && current_user.id == answer.user_id %>
       <form method="GET" action="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit" class="inline">
         <input type="submit" value="Edit answer">
       </form>
@@ -115,7 +115,7 @@
           deleted_user
         <% end %>
         <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
-        <% if !current_user.nil? && current_user.id == comment.user.id %>
+        <% if !current_user.nil? && current_user.id == comment.user_id %>
           <form method="GET" action="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit" class="inline">
             <input type="submit" value="Edit comment">
           </form>

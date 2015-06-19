@@ -10,6 +10,7 @@ $(document).ready(function() {
     alert("hitting the paragraph");
     event.preventDefault();
 
+
   });
 
 });
