@@ -14,7 +14,7 @@
 
 <div class="questionbody">
   <p><%= @question.body %></p>
-  <% if current_user.id == @question.user.id %>
+
     <form method="GET" action="/questions/<%= @question.id %>/edit" class="inline">
       <input type="submit" value="Edit question">
     </form>
@@ -22,7 +22,7 @@
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete question">
     </form>
-  <% end %>
+
 
   <p class="posterbox">
     Asked on <%= @question.created_at.strftime("%b %d, %Y at %l:%M %p") %> by
@@ -43,7 +43,7 @@
           deleted_user
         <% end %>
         <%= comment.created_at.strftime("%b %d %l:%M %p") %>
-        <% if current_user.id == comment.user.id %>
+
           <form method="GET" action="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit" class="inline">
             <input type="submit" value="Edit comment">
           </form>
@@ -51,7 +51,7 @@
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete comment">
           </form>
-        <% end %>
+
       </p>
     </div>
   <% end %>
@@ -87,7 +87,7 @@
     <div class="answerbody">
   <% end %>
     <p><%= answer.body %></p>
-    <% if current_user.id == answer.user.id %>
+
       <form method="GET" action="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit" class="inline">
         <input type="submit" value="Edit answer">
       </form>
@@ -95,7 +95,7 @@
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete answer">
       </form>
-    <% end %>
+
 
     <p class="posterbox">
       Answered on <%= answer.created_at.strftime("%b %d, %Y at %l:%M %p") %> by
@@ -115,7 +115,7 @@
           deleted_user
         <% end %>
         <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
-        <% if current_user.id == comment.user.id %>
+
           <form method="GET" action="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit" class="inline">
             <input type="submit" value="Edit comment">
           </form>
@@ -123,7 +123,7 @@
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete comment">
           </form>
-        <% end %>
+
       </div>
     <% end %>
 
