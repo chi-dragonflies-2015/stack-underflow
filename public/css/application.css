@@ -264,6 +264,10 @@ a:visited {
   margin-bottom: 1em;
 }
 
+#best_answer {
+  border: 2px solid red;
+}
+
 .commenttitle {
   width: 100%;
   padding: 0;

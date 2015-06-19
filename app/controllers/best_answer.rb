@@ -1,6 +1,10 @@
 put '/questions/:id/best_answer' do |id|
   question = Question.find_by(id: id)
-  question.best_answer_id = params[:answer_id]
+
+  redirect back unless current_user == question.user
+
+  question.best_answer = Answer.find_by(id: params[:best_answer])
+  question.save
   redirect "/questions/#{id}/answers"
 end
 

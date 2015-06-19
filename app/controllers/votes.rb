@@ -6,50 +6,50 @@
 #Routes, reloads, and redirects all need to be adapted to fit our current layout stuff.
 
 post '/questions/:id/votes' do |id|
+  redirect back unless logged_in?
   value = params[:value]
   user = current_user
   @question = Question.find_by(id: id)
-  puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-  puts "id is #{:d}"
-  puts "Question id is #{@question.id}"
-  puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+  @answers = @question.answers
   if @question.eligible_voter?(user)
-    #TODO reload the page to display the new vote
     @question.votes.create(user: user, value: value)
-    erb :"questions/"
+    erb :"questions/show"
   else
-    #NOTE: is this the correct redirect address?
-    redirect to "questions/#{@question.id}"
+    redirect to "questions/#{@question.id}/answers"
   end
 end
 
 post '/answers/:id/votes' do |id|
-  #need to pass a negative one or positive one
+  redirect back unless logged_in?
   value = params[:value]
   user = current_user
-  @answer = Answer.find_by(id: id)
-  if @answer.eligible_voter?(user)
-    #TODO reload the page to display the new vote
-    @answer.votes.create(user: user, value: value)
-    erb :"answers/"
+  answer = Answer.find_by(id: id)
+  @question = answer.question
+  @answers = @question.answers
+  if answer.eligible_voter?(user)
+    answer.votes.create(user: user, value: value)
+    erb :"questions/show"
   else
-    #NOTE: is this the correct redirect address?
-    redirect to "answers/#{@question.id}"
+    redirect to "questions/#{@question.id}/answers"
   end
 end
 
 post '/comments/:id/votes' do
-  #need to pass a negative one or positive one
+  redirect back unless logged_in?
   value = params[:value]
   user = current_user
   @comment = Comment.find_by(id: :id)
-  if @comment.eligible_voter?(user)
-    #TODO reload the page to display the new vote
-    @comment.votes.create(user: user, value: value)
-    erb :"comments/"
+  if @comment.commented_type == "Question"
+    @question = Question.find_by(id: @comment.commented_id)
   else
-    #NOTE: is this the correct redirect address?
-    redirect to "comments/#{@question.id}"
+    @question = Answer.find_by(id: @comment.commented_id).question
+  end
+    @answers = @question.answers
+  if @comment.eligible_voter?(user)
+    @comment.votes.create(user: user, value: value)
+    erb :"questions/show"
+  else
+    redirect to "questions/#{@question.id}/answers"
   end
 end
 
