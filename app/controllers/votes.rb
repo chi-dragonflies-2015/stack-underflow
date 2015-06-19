@@ -7,49 +7,64 @@
 
 post '/questions/:id/votes' do |id|
   redirect back unless logged_in?
-  value = params[:value]
-  user = current_user
-  @question = Question.find_by(id: id)
-  @answers = @question.answers
-  if @question.eligible_voter?(user)
-    @question.votes.create(user: user, value: value)
-    erb :"questions/show"
+
+  if !request.xhr?
+    value = params[:value]
+    user = current_user
+    @question = Question.find_by(id: id)
+    @answers = @question.answers
+    if @question.eligible_voter?(user)
+      @question.votes.create(user: user, value: value)
+      erb :"questions/show"
+    else
+      redirect to "questions/#{@question.id}/answers"
+    end
   else
-    redirect to "questions/#{@question.id}/answers"
+
   end
 end
 
 post '/answers/:id/votes' do |id|
   redirect back unless logged_in?
-  value = params[:value]
-  user = current_user
-  answer = Answer.find_by(id: id)
-  @question = answer.question
-  @answers = @question.answers
-  if answer.eligible_voter?(user)
-    answer.votes.create(user: user, value: value)
-    erb :"questions/show"
+
+  if !request.xhr?
+    value = params[:value]
+    user = current_user
+    answer = Answer.find_by(id: id)
+    @question = answer.question
+    @answers = @question.answers
+    if answer.eligible_voter?(user)
+      answer.votes.create(user: user, value: value)
+      erb :"questions/show"
+    else
+      redirect to "questions/#{@question.id}/answers"
+    end
   else
-    redirect to "questions/#{@question.id}/answers"
+
   end
 end
 
 post '/comments/:id/votes' do
   redirect back unless logged_in?
-  value = params[:value]
-  user = current_user
-  @comment = Comment.find_by(id: :id)
-  if @comment.commented_type == "Question"
-    @question = Question.find_by(id: @comment.commented_id)
+
+  if !request.xhr?
+    value = params[:value]
+    user = current_user
+    @comment = Comment.find_by(id: :id)
+    if @comment.commented_type == "Question"
+      @question = Question.find_by(id: @comment.commented_id)
+    else
+      @question = Answer.find_by(id: @comment.commented_id).question
+    end
+      @answers = @question.answers
+    if @comment.eligible_voter?(user)
+      @comment.votes.create(user: user, value: value)
+      erb :"questions/show"
+    else
+      redirect to "questions/#{@question.id}/answers"
+    end
   else
-    @question = Answer.find_by(id: @comment.commented_id).question
-  end
-    @answers = @question.answers
-  if @comment.eligible_voter?(user)
-    @comment.votes.create(user: user, value: value)
-    erb :"questions/show"
-  else
-    redirect to "questions/#{@question.id}/answers"
+
   end
 end
 

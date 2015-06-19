@@ -1,12 +1,14 @@
 <div class="questiontitle"><%= @question.title %></div>
 
 <div class="votebox">
-  <form name="upvote" action="/questions/<%= @question.id %>/votes" method="post">
+  <form name="upvote" id="question_up" action="/questions/<%= @question.id %>/votes" method="post">
   <input type="hidden" name="value" value="1">
   <input type="image" value="upvote" src="/upvote.jpg">
   </form>
-  <%= @question.reputation %>
-  <form name="downvote" action="/questions/<%= @question.id %>/votes" method="post">
+  <span id="questionReputation">
+    <%= @question.reputation %>
+  </span>
+  <form name="downvote" id="question_down" action="/questions/<%= @question.id %>/votes" method="post">
   <input type="hidden" name="value" value="-1">
   <input type="image" value="downvote" src="/downvote.jpg">
   </form>
@@ -60,12 +62,13 @@
 
 <% @answers.each do |answer| %>
   <div class="votebox">
-    <form name="upvote" action="/answers/<%= answer.id %>/votes" method="post">
+    <form name="upvote" id="answer_up" action="/answers/<%= answer.id %>/votes" method="post">
     <input type="hidden" name="value" value="1">
     <input type="image" value="upvote" src="/upvote.jpg">
     </form>
-    <%= answer.reputation %>
-    <form name="downvote" action="/answers/<%= answer.id %>/votes" method="post">
+    <span id="answerReputation">  <%= answer.reputation %>
+    </span>
+    <form name="downvote" id="answer_down" action="/answers/<%= answer.id %>/votes" method="post">
     <input type="hidden" name="value" value="-1">
     <input type="image" value="downvote" src="/downvote.jpg">
     </form>
