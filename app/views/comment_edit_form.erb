@@ -2,9 +2,9 @@
   <p>DID NOT SAVE! Try again.</p>
 <% end %>
 
-<form method="POST" action="/questions/<%= @question.id %>/comments/<%= @comment_id %>">
+<form method="POST" action="/questions/<%= @question.id %>/comments/<%= @comment.id%>">
   <h3>Edit comment:</h3>
-  <input type="hidden" name="_method" method="put">
+  <input type="hidden" name="_method" value="put">
   <p><textarea name="comment[body]" placeholder="comment"></textarea></p>
   <input type="submit">
 </form>

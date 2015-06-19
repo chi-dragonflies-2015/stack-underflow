@@ -81,7 +81,10 @@ end
 
 post '/questions/:id/answers' do |id|
   answer = Answer.new(params[:answer])
-  if answer.save
+  question = Question.find(id)
+
+  if answer
+    question.answers << answer
     redirect "/questions/#{id}/answers"
   else
     @not_saved = true
@@ -112,7 +115,9 @@ end
 
 post '/questions/:id/comments' do
   comment = Comment.new(params[:comment])
-  if comment.save
+  question = Question.find(params[:id])
+  if comment
+    question.comments << comment
     redirect "/questions/#{params[:id]}/answers"
   else
     @not_saved = true
@@ -128,6 +133,7 @@ get '/questions/:question_id/comments/:comment_id/edit' do
 end
 
 put '/questions/:question_id/comments/:comment_id' do
+  p ">" * 50
   comment = Comment.find_by(params[:comment_id])
   comment.update(params[:comment])
   redirect "/questions/#{params[:question_id]}/answers"
@@ -138,6 +144,8 @@ get '/questions/:question_id/answers/:answer_id/edit' do
   @answer = Answer.find(params[:answer_id])
   erb :answer_edit_form
 end
+
+
 
 # Begin Jason's testing routes
 
