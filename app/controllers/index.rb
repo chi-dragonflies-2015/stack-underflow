@@ -8,6 +8,7 @@ end
 
 delete '/logout' do
   logout_user
+  redirect '/'
 end
 
 get '/questions' do
