@@ -1,6 +1,7 @@
 put '/questions/:id/best_answer' do |id|
   question = Question.find_by(id: id)
-  question.best_answer_id = params[:answer_id]
+  question.best_answer = Answer.find_by(id: params[:best_answer])
+  question.save
   redirect "/questions/#{id}/answers"
 end
 

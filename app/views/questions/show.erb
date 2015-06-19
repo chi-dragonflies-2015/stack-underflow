@@ -61,9 +61,20 @@
     <input type="hidden" name="value" value="-1">
     <input type="image" value="downvote" src="/downvote.jpg">
     </form>
-  </div>
+    <% if current_user == @question.user %>
+      <form name="best_answer" method="post" action="/questions/<%= @question.id%>/best_answer">
+        <input type="hidden" name="_method" value="put">
+        <input type="hidden" name="best_answer" value="<%= answer.id%>">
+        <input type="submit" value="best">
+      </form>
+    <% end %>
 
-  <div class="answerbody">
+  </div>
+  <% if @question.best_answer_id == answer.id %>
+    <div class="answerbody" id="best_answer">
+  <% else %>
+    <div class="answerbody">
+  <% end %>
     <p><%= answer.body %></p>
 
     <p class="posterbox">
