@@ -120,10 +120,12 @@ post '/questions/:question_id/answers/:answer_id/comments' do
 end
 
 post '/questions/:id/comments' do
+  user = current_user
   comment = Comment.new(params[:comment])
   question = Question.find(params[:id])
-  if comment
+  if comment.save
     question.comments << comment
+    user.comments << question.comments.last
     redirect "/questions/#{params[:id]}/answers"
   else
     @not_saved = true
