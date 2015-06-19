@@ -36,20 +36,19 @@ get '/questions/:id/answers' do  |id|
   erb :'/questions/show'
 end
 
-get '/questions/:id/edit' do #secure
-  redirect "/questions/#{params[:id]}" if !session[:user_id]
+get '/questions/:id/edit' do #secure!!!
   @question = Question.find(params[:id])
+  redirect "/questions/#{params[:id]}/answers" unless session[:user_id] == current_user.id && @question.user_id == current_user.id
   erb :question_edit_form
-
 end
 
-put '/questions/:id' do #secure
-  redirect "/questions/#{params[:id]}" if !session[:user_id]
-  question = Question.find(params[:id])
-  question.update(params[:question])
-  redirect "/questions/#{params[:id]}/answers"
+# put '/questions/:id' do 
+#   redirect "/questions/#{params[:id]}" if !session[:user_id]
+#   question = Question.find(params[:id])
+#   question.update(params[:question])
+#   redirect "/questions/#{params[:id]}/answers"
 
-end
+# end
 
 delete '/questions/:id' do
   question = Question.find(params[:id])
