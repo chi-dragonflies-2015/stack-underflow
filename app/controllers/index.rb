@@ -81,6 +81,10 @@ get '/questions/:id/answers/new' do
 end
 
 post '/questions/:id/answers' do |id|
+  puts "$$$$$$$$4"
+  puts logged_in?
+  puts "%%%%%%%%%%"
+  redirect back unless logged_in?
   user = current_user
   answer = Answer.new(params[:answer])
   question = Question.find(id)
