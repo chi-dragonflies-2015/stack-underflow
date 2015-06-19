@@ -145,7 +145,17 @@ get '/questions/:question_id/answers/:answer_id/edit' do
   erb :answer_edit_form
 end
 
+delete '/questions/:question_id/answers/:answer_id' do
+  answer = Answer.find(params[:answer_id])
+  answer.destroy
+  redirect "/questions/#{params[:question_id]}/answers"
+end
 
+delete '/questions/:question_id/comments/:comment_id' do
+  comment = Comment.find(params[:comment_id])
+  comment.destroy
+  redirect "/questions/#{params[:question_id]}/answers"
+end
 
 # Begin Jason's testing routes
 
@@ -164,8 +174,8 @@ end
 
 # End Jason's testing routes
 
-get '/questions/:id' do
-end
+# get '/questions/:id' do
+# end
 
 
 put '/questions/:question_id/answers/:answer_id' do
