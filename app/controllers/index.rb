@@ -80,11 +80,13 @@ get '/questions/:id/answers/new' do
 end
 
 post '/questions/:id/answers' do |id|
+  user = current_user
   answer = Answer.new(params[:answer])
   question = Question.find(id)
-
   if answer
     question.answers << answer
+    question_answer = question.answers.last
+    user.answers << question_answer
     redirect "/questions/#{id}/answers"
   else
     @not_saved = true
@@ -93,24 +95,28 @@ post '/questions/:id/answers' do |id|
 end
 
 get '/questions/:question_id/answers/:answer_id/comments/new' do
-  @question = Question.find(params[:id])
-  @answer = Answer.find(params[:id])
+  @question = Question.find_by(id: params[:question_id])
+  @answer = Answer.find_by(id: params[:answer_id])
   erb :answer_comment_form
 end
 
 post '/questions/:question_id/answers/:answer_id/comments' do
-  comment = Comment.new(params[:comment])
-  if comment.save
+  p "<" * 50 + " /questions/:question_id/answers/:answer_id/comments " + ">" * 50
+  user = current_user
+  comment = Comment.create(user_id: user.id, body: params[:comment][:body])
+  answer = Answer.find_by(id: params[:answer_id])
+  answer.comments << comment
+  
+  puts "\n\n" + "<" * 50 + " #{ params[:comment] } " + ">" * 50 + "\n\n"
+  puts "\n\n" + "<" * 50 + " #{ answer.comments.last.body } " + ">" * 50 + "\n\n"
+
+  if user.comments << answer.comments.last
     redirect "/questions/#{params[:question_id]}/answers"
   else
+    p "NOT SAVED"
     @not_saved = true
-    erb :answer_comment_form
+    # erb :answer_comment_form
   end
-end
-
-get '/questions/:id/comments/new' do
-  @question = Question.find(params[:id])
-  erb :question_comment_form
 end
 
 post '/questions/:id/comments' do
