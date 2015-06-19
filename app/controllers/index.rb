@@ -42,13 +42,13 @@ get '/questions/:id/edit' do #secure!!!
   erb :question_edit_form
 end
 
-# put '/questions/:id' do 
-#   redirect "/questions/#{params[:id]}" if !session[:user_id]
-#   question = Question.find(params[:id])
-#   question.update(params[:question])
-#   redirect "/questions/#{params[:id]}/answers"
+put '/questions/:id' do
+  redirect "/questions/#{params[:id]}" if !session[:user_id]
+  question = Question.find(params[:id])
+  question.update(params[:question])
+  redirect "/questions/#{params[:id]}/answers"
 
-# end
+end
 
 delete '/questions/:id' do
   question = Question.find(params[:id])
@@ -106,7 +106,7 @@ post '/questions/:question_id/answers/:answer_id/comments' do
   comment = Comment.create(user_id: user.id, body: params[:comment][:body])
   answer = Answer.find_by(id: params[:answer_id])
   answer.comments << comment
-  
+
   puts "\n\n" + "<" * 50 + " #{ params[:comment] } " + ">" * 50 + "\n\n"
   puts "\n\n" + "<" * 50 + " #{ answer.comments.last.body } " + ">" * 50 + "\n\n"
 
