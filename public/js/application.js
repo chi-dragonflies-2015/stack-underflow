@@ -37,4 +37,12 @@ $(document).ready(function() {
   function voteComment(event) {
 
   };
+
+
+  $(".posterbox").on("click", function(event) {
+    alert("hitting the paragraph");
+    event.preventDefault();
+
+  });
+
 });

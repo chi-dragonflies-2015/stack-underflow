@@ -1,14 +1,12 @@
 <div class="questiontitle"><%= @question.title %></div>
 
 <div class="votebox">
-  <form name="upvote" id="question_up" action="/questions/<%= @question.id %>/votes" method="post">
+  <form name="upvote" action="/questions/<%= @question.id %>/votes" method="post">
   <input type="hidden" name="value" value="1">
   <input type="image" value="upvote" src="/upvote.jpg">
   </form>
-  <span id="questionReputation">
-    <%= @question.reputation %>
-  </span>
-  <form name="downvote" id="question_down" action="/questions/<%= @question.id %>/votes" method="post">
+  <%= @question.reputation %>
+  <form name="downvote" action="/questions/<%= @question.id %>/votes" method="post">
   <input type="hidden" name="value" value="-1">
   <input type="image" value="downvote" src="/downvote.jpg">
   </form>
@@ -16,7 +14,7 @@
 
 <div class="questionbody">
   <p><%= @question.body %></p>
-  <% if !current_user.nil? && current_user.id == @question.user.id %>
+
     <form method="GET" action="/questions/<%= @question.id %>/edit" class="inline">
       <input type="submit" value="Edit question">
     </form>
@@ -24,7 +22,7 @@
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="Delete question">
     </form>
-  <% end %>
+
 
   <p class="posterbox">
     Asked on <%= @question.created_at.strftime("%b %d, %Y at %l:%M %p") %> by
@@ -45,7 +43,7 @@
           deleted_user
         <% end %>
         <%= comment.created_at.strftime("%b %d %l:%M %p") %>
-        <% if !current_user.nil? && current_user.id == comment.user.id %>
+
           <form method="GET" action="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit" class="inline">
             <input type="submit" value="Edit comment">
           </form>
@@ -53,7 +51,7 @@
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete comment">
           </form>
-        <% end %>
+
       </p>
     </div>
   <% end %>
@@ -65,13 +63,12 @@
 
 <% @answers.each do |answer| %>
   <div class="votebox">
-    <form name="upvote" id="answer_up" action="/answers/<%= answer.id %>/votes" method="post">
+    <form name="upvote" action="/answers/<%= answer.id %>/votes" method="post">
     <input type="hidden" name="value" value="1">
     <input type="image" value="upvote" src="/upvote.jpg">
     </form>
-    <span id="answerReputation">  <%= answer.reputation %>
-    </span>
-    <form name="downvote" id="answer_down" action="/answers/<%= answer.id %>/votes" method="post">
+    <%= answer.reputation %>
+    <form name="downvote" action="/answers/<%= answer.id %>/votes" method="post">
     <input type="hidden" name="value" value="-1">
     <input type="image" value="downvote" src="/downvote.jpg">
     </form>
@@ -90,7 +87,7 @@
     <div class="answerbody">
   <% end %>
     <p><%= answer.body %></p>
-    <% if !current_user.nil? && current_user.id == answer.user.id %>
+
       <form method="GET" action="/questions/<%= @question.id %>/answers/<%= answer.id %>/edit" class="inline">
         <input type="submit" value="Edit answer">
       </form>
@@ -98,7 +95,7 @@
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete answer">
       </form>
-    <% end %>
+
 
     <p class="posterbox">
       Answered on <%= answer.created_at.strftime("%b %d, %Y at %l:%M %p") %> by
@@ -118,7 +115,7 @@
           deleted_user
         <% end %>
         <%= comment.created_at.strftime("%b %d %l:%M %p") %></p>
-        <% if !current_user.nil? && current_user.id == comment.user.id %>
+
           <form method="GET" action="/questions/<%= @question.id %>/comments/<%= comment.id %>/edit" class="inline">
             <input type="submit" value="Edit comment">
           </form>
@@ -126,7 +123,7 @@
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete comment">
           </form>
-        <% end %>
+
       </div>
     <% end %>
 
